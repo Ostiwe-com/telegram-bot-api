@@ -271,6 +271,7 @@ type BaseChat struct {
 	ReplyMarkup              interface{}
 	DisableNotification      bool
 	AllowSendingWithoutReply bool
+	ScheduleDate             int64
 }
 
 func (chat *BaseChat) params() (Params, error) {
@@ -281,6 +282,7 @@ func (chat *BaseChat) params() (Params, error) {
 	params.AddBool("disable_notification", chat.DisableNotification)
 	params.AddBool("allow_sending_without_reply", chat.AllowSendingWithoutReply)
 	params.AddBool("protect_content", chat.ProtectContent)
+	params.AddNonZero64("schedule_date", chat.ScheduleDate)
 
 	err := params.AddInterface("reply_markup", chat.ReplyMarkup)
 
